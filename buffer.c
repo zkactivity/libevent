@@ -2868,6 +2868,11 @@ evbuffer_add_file(struct evbuffer *outbuf, int fd,
 		chain->buffer_len = length + offset;
 		chain->off = length + offset;
 
+		/* make way for pointing to the offset in the new chain if the
+		 * offset was equested
+		 */
+		chain->misalign = offset;
+
 		info = EVBUFFER_CHAIN_EXTRA(struct evbuffer_chain_fd, chain);
 		info->fd = fd;
 
@@ -2880,9 +2885,6 @@ evbuffer_add_file(struct evbuffer *outbuf, int fd,
 			outbuf->n_add_for_cb += length;
 
 			evbuffer_chain_insert(outbuf, chain);
-
-			/* we need to subtract whatever we don't need */
-			evbuffer_drain(outbuf, offset);
 		}
 	} else
 #endif
