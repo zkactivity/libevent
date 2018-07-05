@@ -431,12 +431,6 @@
 /* Define if kqueue works correctly with pipes */
 #cmakedefine EVENT__HAVE_WORKING_KQUEUE 1
 
-#ifdef __USE_UNUSED_DEFINITIONS__
-/* Define to necessary symbol if this constant uses a non-standard name on your system. */
-/* XXX: Hello, this isn't even used, nor is it defined anywhere... - Ellzey */
-#define EVENT__PTHREAD_CREATE_JOINABLE ${EVENT__PTHREAD_CREATE_JOINABLE}
-#endif
-
 /* The size of `pthread_t', as computed by sizeof. */
 #define EVENT__SIZEOF_PTHREAD_T @EVENT__SIZEOF_PTHREAD_T@
 
