@@ -56,3 +56,4 @@ build_script:
         $env:CTEST_PARALLEL_LEVEL="20"
         ctest --output-on-failure
       }
+  - appveyor PushArtifact include/event2/event-config.h
